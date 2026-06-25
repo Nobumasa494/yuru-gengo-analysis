@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import japanize_matplotlib
+import matplotlib_fontja
 from feature_extraction import (
     classify_theme, classify_emotion,
     classify_difficulty, classify_audience, classify_title_type
