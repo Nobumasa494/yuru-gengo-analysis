@@ -1,6 +1,7 @@
 streamlit
 pandas
 matplotlib
+japanize-matplotlib
 scipy
 scikit-posthocs
 scikit-learn

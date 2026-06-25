@@ -1,8 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib
-matplotlib.rcParams['font.family'] = 'Meiryo'
+import japanize_matplotlib
 from feature_extraction import (
     classify_theme, classify_emotion,
     classify_difficulty, classify_audience, classify_title_type
