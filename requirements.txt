@@ -1,0 +1,8 @@
+streamlit
+pandas
+matplotlib
+scipy
+scikit-posthocs
+scikit-learn
+lightgbm
+catboost

@@ -14,8 +14,9 @@ TITLE_TYPE_OPTIONS = [
     "クイズ型", "ランキング型", "雑談型", "ライブ型", "その他"
 ]
 
-df = pd.read_csv("youtube_videos_categorized.csv", encoding="utf-8-sig")
-print(f"データ読み込み完了: {len(df)} 件")
+if __name__ == "__main__":
+    df = pd.read_csv("youtube_videos_categorized.csv", encoding="utf-8-sig")
+    print(f"データ読み込み完了: {len(df)} 件")
 
 
 def classify_theme(title, category):
@@ -213,30 +214,31 @@ def classify_title_type(title):
     return '断定型'
 
 
-# ===== メイン処理 =====
-features = []
-for _, row in df.iterrows():
-    title = row['title']
-    category = row['category']
-    features.append({
-        'theme': classify_theme(title, category),
-        'emotion': classify_emotion(title),
-        'difficulty': classify_difficulty(title, category),
-        'audience': classify_audience(title, category),
-        'title_type': classify_title_type(title),
-    })
+if __name__ == "__main__":
+    # ===== メイン処理 =====
+    features = []
+    for _, row in df.iterrows():
+        title = row['title']
+        category = row['category']
+        features.append({
+            'theme': classify_theme(title, category),
+            'emotion': classify_emotion(title),
+            'difficulty': classify_difficulty(title, category),
+            'audience': classify_audience(title, category),
+            'title_type': classify_title_type(title),
+        })
 
-features_df = pd.DataFrame(features)
-for col in features_df.columns:
-    df[col] = features_df[col]
+    features_df = pd.DataFrame(features)
+    for col in features_df.columns:
+        df[col] = features_df[col]
 
-output_path = "youtube_videos_features.csv"
-df.to_csv(output_path, index=False, encoding='utf-8-sig')
-print(f"\n保存完了: {output_path}")
-print(f"列: {list(df.columns)}")
+    output_path = "youtube_videos_features.csv"
+    df.to_csv(output_path, index=False, encoding='utf-8-sig')
+    print(f"\n保存完了: {output_path}")
+    print(f"列: {list(df.columns)}")
 
-print("\n" + "=" * 50)
-for col in ["theme", "emotion", "difficulty", "audience", "title_type"]:
-    print(f"\n【{col}】")
-    print(df[col].value_counts().to_string())
-print("=" * 50)
+    print("\n" + "=" * 50)
+    for col in ["theme", "emotion", "difficulty", "audience", "title_type"]:
+        print(f"\n【{col}】")
+        print(df[col].value_counts().to_string())
+    print("=" * 50)
