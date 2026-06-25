@@ -1,0 +1,9 @@
+catboost_info/
+value_counts_output.txt
+main1.py
+youtube_videos_all.csv
+youtube_videos_categorized.csv
+youtube_videos.csv
+__pycache__/
+*.pyc
+.venv/
